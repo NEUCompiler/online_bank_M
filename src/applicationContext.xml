@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
+
+		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
+
+		<property value="jdbc:mysql://localhost:3306/Manager" name="url" />
+
+		<property value="root" name="username" />
+
+		<property value="root" name="password" />
+
+	</bean>
+
+
+	<bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		id="sessionFactory">
+
+
+		<property name="dataSource">
+
+			<ref bean="dataSource" />
+
+		</property>
+
+
+		<property name="hibernateProperties">
+
+
+			<props>
+
+				<prop key="hibernate.dialect"> org.hibernate.dialect.MySQLDialect </prop>
+
+				<prop key="hibernate.show_sql">true</prop>
+
+				<prop key="hibernate.format_sql">true</prop>
+
+			</props>
+
+		</property>
+
+
+		<property name="mappingResources">
+
+
+			<list>
+
+				<value>com/manager/ManagerOperater.hbm.xml</value>
+			    <value>Operater/db/Operater.hbm.xml</value> 
+			    <value>jxl/tablemaker/db/Dealinform.hbm.xml</value>
+			    <value>System/Par/rate/Loan.hbm.xml</value>
+			    <value>System/Par/rate/Deposit.hbm.xml</value>
+			    <value>System/Par/bigdeal/Bigdeal.hbm.xml</value>
+			    <value>System/Par/rate/MRole.hbm.xml</value>
+			    <value>System/Par/rate/MAu.hbm.xml</value>
+			    <value>jxl/tablemaker/db/Appointment.hbm.xml</value>
+			    
+
+			</list>
+			
+
+		</property>
+
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="ManagerOperaterDAO"
+		class="com.manager.ManagerOperaterDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OperaterDAO" class="Operater.db.OperaterDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="DealinformDAO" class="jxl.tablemaker.db.DealinformDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="LoanDAO" class="System.Par.rate.LoanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="DepositDAO" class="System.Par.rate.DepositDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BigdealDAO" class="System.Par.bigdeal.BigdealDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MRoleDAO" class="System.Par.rate.MRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MAuDAO" class="System.Par.rate.MAuDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+
+	</bean>
+	<bean id="AppointmentDAO"
+		class="jxl.tablemaker.db.AppointmentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>
