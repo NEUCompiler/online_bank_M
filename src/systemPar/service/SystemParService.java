@@ -11,6 +11,8 @@ import System.Par.rate.LoanDAO;
 import System.Par.rate.MAuDAO;
 import System.Par.rate.MRole;
 import System.Par.rate.MRoleDAO;
+import System.Par.rate.Orgnization;
+import System.Par.rate.OrgnizationDAO;
 
 public class SystemParService {
 	
@@ -23,6 +25,8 @@ public class SystemParService {
 	MRoleDAO  mroledao = new MRoleDAO();
 	
 	MAuDAO maudao =new MAuDAO();
+	
+	OrgnizationDAO ordao = new OrgnizationDAO();
 	
 	public List loanshow()
 	{
@@ -94,6 +98,21 @@ public class SystemParService {
 		MRole m=mroledao.findById(roleid);
 		m.setAuId(auid);
 		mroledao.update(m);
+		return true;
+	}
+
+	public List orgnizationshow() {
+		List list = ordao.findAll();
+		return list;
+	}
+
+	public boolean orgnizationupdate(Integer orgnizationid, Integer newtotal,
+			String newcharge) {
+		
+		Orgnization  O = ordao.findById(orgnizationid);
+		O.setOrgnizationtotalp(newtotal);
+		O.setOrgnizationcharge(newcharge);
+		ordao.update(O);
 		return true;
 	}
 

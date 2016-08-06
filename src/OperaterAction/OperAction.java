@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import javassist.bytecode.stackmap.TypeData.ClassName;
+
+import org.apache.log4j.Logger;
+
 import Operater.db.Operater;
 import Operater.serviceimpl.Operaterserviceimpl;
 
@@ -16,6 +20,8 @@ public class OperAction extends OperaterSuperAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	Operaterserviceimpl OperS = new Operaterserviceimpl();
+	
+	Logger logger = Logger.getLogger(ClassName.class);
 
 	public String showall() throws Exception {
 
@@ -25,6 +31,7 @@ public class OperAction extends OperaterSuperAction {
 			return "showall_failure";
 		}
 		if (list.size() > 0) {
+			logger.info("操作员列表生成");
 			session.setAttribute("Oper_lsit", list);
 			return "showall_success";
 		} else {
@@ -44,6 +51,7 @@ public class OperAction extends OperaterSuperAction {
 		Operater O = new Operater(operaterName, operaterPassW, operaterType, operaterSex,operaterBirthday);
 		O.setOperaterId(OperS.getnewID());
 		if (OperS.add(O)) {
+			logger.info("操作员添加成功");
 			return "add_success";
 		} else {
 			return "add_failure";
@@ -58,6 +66,7 @@ public class OperAction extends OperaterSuperAction {
 		if (OperS.delete(operaterName)) {
 			List<Operater> list = OperS.showall();
 			session.setAttribute("Oper_lsit", list);
+			logger.info("操作员删除成功");
 			return "delete_success";
 		} else {
 			return "delete_failure";

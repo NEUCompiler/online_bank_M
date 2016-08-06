@@ -17,16 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var treeMenu = [
 	{ level:1, name:"操作员管理"},
 	{ level:2, name:"操作员列表", ico:"images/icon_default.gif",link:"<%=path%>/OperaterAction/Oper_showall.action"},
-	{ level:2, name:"密码重置", ico:"images/icon_default.gif",link:"O_resetPW.jsp"},
-	{ level:2, name:"修改密码", ico:"images/icon_default.gif",link:"M_ChangePassWord.jsp"},
 	{ level:1, name:"报表"},
 	{ level:2, name:"基本报表", ico:"images/icon_default.gif",link:"Jxlbasictabledeal.jsp"},
-	{ level:2, name:"预期报表", ico:"images/icon_default.gif",link:"Jxlexpecttable.jsp"},
-	{ level:1, name:"参数管理"},
-	{ level:2, name:"角色权限", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_roleshow.action"},
-	{ level:2, name:"行内机构维护", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_orgnizationshow.action"},
-	{ level:2, name:"费率设置", ico:"images/icon_default.gif",link:"rateset.jsp"},
-	{ level:2, name:"大额转账时间设定", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_bigdealshow.action"},
+	{ level:2, name:"预期报表", ico:"images/icon_default.gif",link:"Jxlexpecttable.jsp"}
+
 	
 ];
 </script>

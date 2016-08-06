@@ -4,10 +4,13 @@ import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
+import javassist.bytecode.stackmap.TypeData.ClassName;
+
+import org.apache.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionContext;
 
 import jxl.tablemaker.db.Dealinform;
-
 import jxl.tablemaker.service.ToexcelService;
 
 public class TablemakerAction extends tablemakerSuperAction{
@@ -21,6 +24,8 @@ public class TablemakerAction extends tablemakerSuperAction{
 	private Dealinform dealinform;
 	private static final long serialVersionUID = 1L;
 	
+	Logger logger = Logger.getLogger(ClassName.class);
+	
 	public String DealToExcel()
 	{
 
@@ -31,6 +36,8 @@ public class TablemakerAction extends tablemakerSuperAction{
 //			Date date = new Date();
 //			String dealid = UUID.randomUUID().toString();
 			toExel.writeDealExcel();
+			logger.info("交易报表生成");
+			
 			
 			
 //			dealinform1.setAccountid(dealinform.getAccountid());
@@ -48,12 +55,14 @@ public class TablemakerAction extends tablemakerSuperAction{
 	public String AppointToExcel()
 	{
 		toExel.writeAppointExcel();
+		logger.info("预约报表生成");
 		return "dealmake_success";
 	}
 	
 	public String OperaterToExcel()
 	{
 		toExel.writeOperaterExcel();
+		logger.info("操作员报表生成");
 		return "dealmake_success";
 	}
 	

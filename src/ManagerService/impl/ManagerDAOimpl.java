@@ -19,7 +19,7 @@ import ManagerService.ManagerDAO;
 @Service
 public class ManagerDAOimpl implements ManagerDAO{
 	@Transactional
-	public boolean ManagerOperaterLogin(ManagerOperater m){
+	public String ManagerOperaterLogin(ManagerOperater m){
 	Transaction tx = null;
 	String hql = " ";
 	try
@@ -32,17 +32,15 @@ public class ManagerDAOimpl implements ManagerDAO{
 		query.setParameter(0, m.getManagerName());
 		query.setParameter(1, m.getManagerPassW());
 	    List list = query.list();
+	    ManagerOperater newm=(ManagerOperater) list.get(0);
 		tx.commit();
-		if(list.size()>0)
-		{
-			return true;
-		}
-		else{
-			return false;
-		}
+		if(list.size()>0){
+	
+			return newm.getManagerType().toString();}
+		
 	}catch(Exception ex){
 		ex.printStackTrace();
-		return false;
+		return "";
 		
 	}finally
 	{
@@ -50,6 +48,7 @@ public class ManagerDAOimpl implements ManagerDAO{
 			tx=null;
 		}
 	}
+	return null;
 	}
 	
 	public boolean ChangePassWord(String NewPassWord,String mname)

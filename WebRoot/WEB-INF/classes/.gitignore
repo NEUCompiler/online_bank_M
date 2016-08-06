@@ -1,12 +1,5 @@
 /ManagerAction/
-/ManagerService/
-/Operater/
-/OperaterAction/
 /System/
-/SystemParrateAction/
-/applicationContext.xml
-/com/
-/hibernate.cfg.xml
 /jxl/
-/struts.xml
-/systemPar/
+/ManagerService/
+/SystemParrateAction/

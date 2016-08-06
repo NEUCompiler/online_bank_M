@@ -16,6 +16,7 @@ public class sysParrateAction extends SyParSuperAction{
 	private static String bigdealamount;
 	private static String bigdealaheadtime;
 	private static Integer depositid;
+	private static Integer orgnizationid;
 	
 	public String loanshow()
 	{
@@ -48,6 +49,13 @@ public class sysParrateAction extends SyParSuperAction{
 		return "rolelist_success";
 	}
 	
+	public String orgnizationshow()
+	{
+		List list= sps.orgnizationshow();
+		session.setAttribute("orgnizationlist", list);
+		return "orgnizationlist_success";
+	}
+	
 //	public String authshow()
 //	{
 //		List list= sps.authshow();
@@ -69,6 +77,8 @@ public class sysParrateAction extends SyParSuperAction{
 		String loanrate1=request.getParameter("rate");
 		float loanrate=Float.parseFloat(loanrate1);
 //		String loantype=request.getParameter("stu.type");
+		if(loanrate1==null)
+			return "loanshow_success";
 		if(sps.update(loanid,loanrate))
 		{
 			List list= sps.loanshow();
@@ -95,6 +105,8 @@ public class sysParrateAction extends SyParSuperAction{
 		String time1   = request.getParameter("aheadtime");
         Integer amount = new Integer(amount1);
         Integer time   = new Integer(time1);
+        if(amount1==null&&time1==null)
+        	 return "bigdeallist_success";
 		if(sps.bigdealupdate(bigdealid,amount,time))
 		{
 			List list =sps.bigdealshow();
@@ -120,6 +132,8 @@ public class sysParrateAction extends SyParSuperAction{
 		float interest=Float.parseFloat(interest1);
 		String time1=request.getParameter("time");
 		Integer time = new Integer(time1);	
+		if(rate1==null&&interest1==null&&time1==null)
+			return "depositshow_success";
 		if(sps.depositupdate(depositid,rate,interest,time))
 		{
 			List list =sps.depositshow();
@@ -139,6 +153,8 @@ public class sysParrateAction extends SyParSuperAction{
 	public String roleupdateRP()
 	{
 		String  auid=request.getParameter("auId");
+		if(auid==null)
+			return "rolelist_success";
 		if(sps.roleupdate(roleid,auid))
 		{
 			List list1= sps.roleshow();
@@ -150,5 +166,28 @@ public class sysParrateAction extends SyParSuperAction{
 		return null;
 	}
 	
+	public String orgnizationupdateRQ()
+	{
+		String orgnizationid1=request.getParameter("stu.orgnizationid");
+		orgnizationid = new Integer(orgnizationid1);
+		return "orgnizationrequest_success";
+		
+	}
+	
+	public String orgnizationupdateRP()
+	{
+		String newtotal1 = request.getParameter("orgnizationtotalp");
+		Integer newtotal = new Integer(newtotal1);
+		String newcharge = request.getParameter("orgnizationcharge");
+		if(newtotal1==null&&newcharge==null)
+			return "orgnizationlist_success";
+		if(sps.orgnizationupdate(orgnizationid,newtotal,newcharge))
+		{
+			List list= sps.orgnizationshow();
+			session.setAttribute("orgnizationlist", list);
+			return "orgnizationlist_success";
+		}
+		return null;
+	}
 
 }

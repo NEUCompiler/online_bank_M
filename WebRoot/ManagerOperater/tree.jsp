@@ -24,7 +24,7 @@ var treeMenu = [
 	{ level:2, name:"预期报表", ico:"images/icon_default.gif",link:"Jxlexpecttable.jsp"},
 	{ level:1, name:"参数管理"},
 	{ level:2, name:"角色权限", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_roleshow.action"},
-	{ level:2, name:"行内机构维护", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_orgnizationshow.action"},
+	{ level:2, name:"行内机构维护", ico:"images/icon_default.gif",link:"SysPar_zzjgshow.jsp"},
 	{ level:2, name:"费率设置", ico:"images/icon_default.gif",link:"rateset.jsp"},
 	{ level:2, name:"大额转账时间设定", ico:"images/icon_default.gif",link:"<%=path%>/SystemParrateAction/sysParrate_bigdealshow.action"},
 	

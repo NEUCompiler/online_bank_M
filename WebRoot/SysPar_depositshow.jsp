@@ -20,11 +20,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style type="text/css">
+	#buttonGroup {
+	padding-left: 10px;
+	float: left;
+	height: 35px;
+}
+
+.button {
+	float: left;
+	margin-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	width: 70px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	border-color: #77D1F6;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 6px 6px;
+	-moz-box-shadow: 2px 2px 4px #282828;
+	-webkit-box-shadow: 2px 2px 4px #282828;
+	background-image: -moz-linear-gradient(top, #EBEBEB, #BFBFBF);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EBEBEB),
+		color-stop(1, #BFBFBF));
+}
+	
+	
+	
+	
+	</style>
 
   </head>
   
+  
+  
   <body>
     存款利率 <br>
+<%--     <div id="tips">
+		<div id="buttonGroup">
+			<div class="button"
+				onmouseout="this.style.backgrsoundColor='';this.style.fontWeight='normal'"
+				onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
+				<a href="<%=path%>/Operater_add.jsp">添加</a>
+			</div>
+			<div class="button"
+				onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'"
+				onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
+				<a href="<%=path%>/Operater_select.jsp">查找</a>
+			</div>
+		</div>
+	</div> --%>
+	<div>
     <table class="default" width="100%" >
 			<col width="10%">
 			<col width="20%">
@@ -56,5 +107,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</s:iterator>
 			<!-- 遍历结束 -->
 		</table>
+	</div>
   </body>
 </html>
